@@ -4,12 +4,11 @@ import FilterUsers from "./components/FilterUsers";
 import Header from "./components/Header";
 import UsersList from "./components/UsersList";
 import useUsers from "./hooks/useUsers";
-import { Outlet } from "react-router";
 import { useState } from "react";
 import type { Status } from "./types/types";
 
-function App() {
-  const { users, setUsers, loading } = useUsers();
+export default function App() {
+  const { users, loading, error } = useUsers();
   const [search, setSearch] = useState<string>("");
   const [status, setStatus] = useState<Status>("all");
 
@@ -26,12 +25,9 @@ function App() {
       <FilterUsers status={status} setStatus={setStatus}></FilterUsers>
       <UsersList
         users={filteredUsers}
-        setUsers={setUsers}
         loading={loading}
+        error={error}
       ></UsersList>
-      <Outlet context={users} />
     </div>
   );
 }
-
-export default App;

@@ -1,10 +1,11 @@
 import type { User, UsersListProps } from "../types/types";
 import UserItem from "./UserItem";
 
-export default function UsersList({ users, loading }: UsersListProps) {
+export default function UsersList({ users, loading, error }: UsersListProps) {
   if (loading) return <div className="text-center">Loading..</div>;
   if (!users || users.length === 0)
     return <div className="text-center">User not found</div>;
+  if (error) return <div className="text-center">{error}</div>;
   return (
     <div className="mx-2 flex flex-col gap-1">
       {users.map((user: User) => (

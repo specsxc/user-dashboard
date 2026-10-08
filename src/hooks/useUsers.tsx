@@ -4,6 +4,7 @@ import type { User } from "../types/types";
 export default function useUsers() {
   const [loading, setLoading] = useState<boolean>(true);
   const [users, setUsers] = useState<User[]>([]);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     async function fetchData() {
@@ -13,11 +14,12 @@ export default function useUsers() {
             Accept: "application/json",
           },
         });
-        if (!res.ok) throw new Error("Wystąpił błąd");
+        if (!res.ok) throw new Error("Wystąpił błąd z API");
         const data = await res.json();
         setUsers(data);
       } catch (e) {
         console.error(e);
+        setError("Failed to load users");
       } finally {
         setLoading(false);
       }
@@ -25,5 +27,5 @@ export default function useUsers() {
     fetchData();
   }, []);
 
-  return { users, setUsers, loading };
+  return { users, setUsers, loading, error };
 }

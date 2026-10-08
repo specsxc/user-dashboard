@@ -8,8 +8,8 @@ export type User = {
 
 export type UsersListProps = {
   users: User[];
-  setUsers: React.Dispatch<React.SetStateAction<User[]>>;
   loading: boolean;
+  error: string | null;
 };
 
 export type UserItemProps = {

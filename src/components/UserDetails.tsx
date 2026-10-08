@@ -5,6 +5,7 @@ import type { User } from "../types/types";
 export default function UserDetails() {
   const [user, setUser] = useState<User>();
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const { userid } = useParams();
 
   useEffect(() => {
@@ -23,6 +24,7 @@ export default function UserDetails() {
         setUser(data);
       } catch (e) {
         console.error(e);
+        setError("Failed to load data");
       } finally {
         setLoading(false);
       }
@@ -34,6 +36,7 @@ export default function UserDetails() {
     return <div className="m-4 text-center text-2xl">Loading...</div>;
   if (!user)
     return <div className="m-4 text-center text-2xl">User not found</div>;
+  if (error) return <div className="m-4 text-center text-2xl">{error}</div>;
   return (
     <div className="p-2">
       <h1 className="my-4 border-b border-white pb-2 text-2xl">User Details</h1>
