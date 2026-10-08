@@ -3,13 +3,13 @@ import SearchUsers from "./components/SearchUsers";
 import FilterUsers from "./components/FilterUsers";
 import Header from "./components/Header";
 import UsersList from "./components/UsersList";
-import useFetchUsers from "./hooks/useUsers";
+import useUsers from "./hooks/useUsers";
 import { Outlet } from "react-router";
 import { useState } from "react";
 import type { Status } from "./types/types";
 
 function App() {
-  const { users, setUsers, loading } = useFetchUsers();
+  const { users, setUsers, loading } = useUsers();
   const [search, setSearch] = useState<string>("");
   const [status, setStatus] = useState<Status>("all");
 

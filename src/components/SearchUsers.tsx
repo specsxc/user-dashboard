@@ -2,7 +2,7 @@ import type { SearchUsersProps } from "../types/types";
 
 export default function SearchUsers({ search, setSearch }: SearchUsersProps) {
   return (
-    <div className="my-2">
+    <div className="m-2">
       <label className="flex">
         <input
           type="text"

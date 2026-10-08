@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import type { User } from "../types/types";
 
-export default function useFetchUsers() {
+export default function useUsers() {
   const [loading, setLoading] = useState<boolean>(true);
   const [users, setUsers] = useState<User[]>([]);
+
   useEffect(() => {
     async function fetchData() {
       try {
