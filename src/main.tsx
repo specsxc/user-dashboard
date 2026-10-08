@@ -9,8 +9,8 @@ const router = createBrowserRouter([
   {
     path: "/",
     Component: App,
-    children: [{ path: ":userid", Component: UserDetails }],
   },
+  { path: "user/:userid", Component: UserDetails },
 ]);
 
 createRoot(document.getElementById("root")!).render(
