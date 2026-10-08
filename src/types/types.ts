@@ -15,3 +15,15 @@ export type UsersListProps = {
 export type UserItemProps = {
   userItem: User;
 };
+
+export type SearchUsersProps = {
+  search: string;
+  setSearch: React.Dispatch<React.SetStateAction<string>>;
+};
+
+export type Status = "all" | "active" | "inactive";
+
+export type FilterUsersProps = {
+  status: Status;
+  setStatus: React.Dispatch<React.SetStateAction<Status>>;
+};
