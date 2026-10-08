@@ -12,9 +12,8 @@ export default function useFetchUsers() {
             Accept: "application/json",
           },
         });
-        if (!res) throw new Error("Błąd");
+        if (!res.ok) throw new Error("Wystąpił błąd");
         const data = await res.json();
-        if (!data) throw new Error("Brak danych");
         setUsers(data);
       } catch (e) {
         console.error(e);

@@ -2,13 +2,13 @@ import type { SearchUsersProps } from "../types/types";
 
 export default function SearchUsers({ search, setSearch }: SearchUsersProps) {
   return (
-    <div>
-      <label>
+    <div className="my-2">
+      <label className="flex">
         <input
           type="text"
-          className="rounded-2xl bg-white px-2 py-1 text-black placeholder:text-gray-400"
+          className="flex-1 rounded-2xl bg-white px-3 py-1 text-black placeholder:text-gray-400"
           name="name"
-          placeholder="user-name"
+          placeholder="Search users.."
           value={search}
           onChange={(e) => setSearch(e.currentTarget.value)}
           required

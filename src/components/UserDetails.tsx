@@ -18,9 +18,8 @@ export default function UserDetails() {
             },
           },
         );
-        if (!res) throw new Error("Błąd");
+        if (!res.ok) throw new Error("Wystąpił błąd");
         const data = await res.json();
-        if (!data) throw new Error("Brak danych");
         setUser(data);
       } catch (e) {
         console.error(e);
@@ -31,18 +30,31 @@ export default function UserDetails() {
     fetchData();
   }, [userid]);
 
-  console.log(user);
-
-  if (loading) return <div>Loading...</div>;
-  if (!user) return <div>Brak danych</div>;
+  if (loading)
+    return <div className="m-4 text-center text-2xl">Loading...</div>;
+  if (!user)
+    return <div className="m-4 text-center text-2xl">User not found</div>;
   return (
-    <div>
-      <h1>User Details</h1>
-      <h2>{user.name}</h2>
-      <p>Email: {user.email}</p>
-      <p>Gender: {user.gender}</p>
-      <p>Status: {user.status}</p>
-      <NavLink to="/">[ ← Back ]</NavLink>
+    <div className="p-2">
+      <h1 className="my-4 border-b border-white pb-2 text-2xl">User Details</h1>
+      <div className="mx-2 my-2 rounded-2xl border border-white px-4 py-4">
+        <h2 className="text-lg">{user.name}</h2>
+        <p>{user.email}</p>
+        <p>Gender: {user.gender}</p>
+        <p className="mb-2">
+          Status:{" "}
+          <span
+            className={
+              user.status === "active" ? "text-green-600" : "text-red-700"
+            }
+          >
+            {user.status}
+          </span>
+        </p>
+        <NavLink to="/" className="font-semibold hover:text-blue-600">
+          [ ← Back ]
+        </NavLink>
+      </div>
     </div>
   );
 }

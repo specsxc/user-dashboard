@@ -20,7 +20,7 @@ function App() {
     return searchMatch && statusMatch;
   });
   return (
-    <div className="p-2">
+    <div className="flex flex-col p-2">
       <Header></Header>
       <SearchUsers search={search} setSearch={setSearch}></SearchUsers>
       <FilterUsers status={status} setStatus={setStatus}></FilterUsers>
